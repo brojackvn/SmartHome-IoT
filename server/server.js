@@ -1,17 +1,33 @@
-// Nhận json từ mqtt và dùng websocket gửi lên client (web)
-// topic: /iot_light_20231/esp32
-// message: {"led":1,"status":1} ===> Dùng websocket gửi lên client luôn
-// "led": id của led đó, "status": trạng thái của led đó
+const express = require('express');
+const morgan = require('morgan');
+const route = require('./routes/index');
+const db = require('./config/db');
+const WebSocketServer = require('./config/websocket/websocket');
+
+const app = express()
+const port = 3000
 
 
+// Connect to database
+db.connect();
 
+// Middleware:
+app.use(
+    express.urlencoded({
+        extended: true,
+    }),
+); // handle data from form to server
+app.use(express.json()); // handle data (JS) from client to server: submit HTML or use JS lib: XMLHttpRequest, Fetch, axios, supervision,...
 
-// Nhận json từ client (web) thông qua websocket gửi lên mqtt
-// topic: //iot_light_20231/server
-// message: {"led":1,"status":1}
+// HTTP logger
+app.use(morgan('combined'));
 
+// routes init
+// route(app);
 
+// WebSocket
+WebSocketServer()
 
-
-// Nhận dữ liệu từ database MongoDB visualize
-// Chưa làm
+app.listen(port, () => {
+    console.log(`Example app listening on port http://localhost:${port}`);
+});
