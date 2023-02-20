@@ -4,8 +4,8 @@
 const char* ssid = "267 Kham Thien Tang 3";
 const char* password = "khamthient3";
 
-#define MQTT_SERVER "broker.hivemq.com"
-#define MQTT_PORT 1883
+#define MQTT_SERVER "cbd7a3523f4d4b35a104329774743563.s2.eu.hivemq.cloud"
+#define MQTT_PORT 8883
 #define MQTT_USER "brojackvn"
 #define MQTT_PASSWORD "brojackvn"
 #define MQTT_LDP_TOPIC "iotlab"

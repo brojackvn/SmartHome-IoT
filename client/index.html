@@ -8,29 +8,135 @@
     <title>HOME</title>
 </head>
 <body>
-    <!-- Title of Page -->
-    <div class="page">
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">SMART HOME</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="icon"><ion-icon name="sunny-outline"></ion-icon></span>
+                        <span class="title">1 LED LIGHT</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="icon"><ion-icon name="sunny-outline"></ion-icon></span>
+                        <span class="title">3 LIGHT - SINRIC PRO</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="icon"><ion-icon name="sunny-outline"></ion-icon></span>
+                        <span class="title">1 MANUAL LIGHT</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="icon"><ion-icon name="thermometer-outline"></ion-icon></span>
+                        <span class="title">1 TEMPERATURE</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="icon"><ion-icon name="water-outline"></ion-icon></span>
+                        <span class="title">1 HUMIDITY</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
+        <!-- MAIN -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <!-- <ion-icon name="menu-outline"></ion-icon> -->
+                </div>
+                <!-- Search -->
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="WELCOME TO MY SMART HOME" style="text-align: center" readonly>
+                        <!-- <ion-icon name="search-outline"></ion-icon> -->
+                    </label>
+                </div>
+                <!-- UsrImg -->
+                <div class="user">
+                    <!-- image here -->
+                </div>
+            </div>
+
+            <!-- card -->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">30 <span>&#176;</span>F</div>
+                        <div class="cardName">Temperature</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="thermometer-outline"></ion-icon>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div>
+                        <div class="numbers">80 %</div>
+                        <div class="cardName">Humidity</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="water-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Details -->
+            <div class="details">
+                <div class="recentTwitters">
+                    <div class="cardHeader">
+                        <h2>Led Light</h2>
+                        <!-- <a href="#" class="btn">View All</a> -->
+                    </div>
+                    <!-- Controller -->
+                    <div class="mid">
+                        <label class="rocker">
+                            <input type="checkbox" checked>
+                            <span class="switch-left">On</span>
+                            <span class="switch-right">Off</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Details -->
+            <div class="details">
+                <div class="recentTwitters">
+                    <div class="cardHeader">
+                        <h2>Temperature Analysis</h2>
+                        <!-- <a href="#" class="btn">View All</a> -->
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Details -->
+            <div class="details">
+                <div class="recentTwitters">
+                    <div class="cardHeader">
+                        <h2>Humidity Analysis</h2>
+                        <!-- <a href="#" class="btn">View All</a> -->
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
     </div>
+   
+    <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    <!-- Controller -->
-    <div class="mid">
-        <label class="rocker">
-            <input type="checkbox" checked>
-            <span class="switch-left">On</span>
-            <span class="switch-right">Off</span>
-        </label>
-
-        <label class="rocker">
-            <input type="checkbox" checked>
-            <span class="switch-left">On</span>
-            <span class="switch-right">Off</span>
-        </label>
-    </div>
-    
-    <!-- Visualize temperature in 3 hours -->
-    <div class="temperature">
-
-    </div>
 </body>
 </html>

@@ -1,18 +1,16 @@
-// Nhận json từ mqtt và dùng websocket gửi lên client (web)
-// topic: /iot_light_20231/esp32
-// message: {"led":1,"status":1} ===> Dùng websocket gửi lên client luôn
-// "led": id của led đó, "status": trạng thái của led đó
+const mqtt = require('mqtt')
 
+async function connect() {
+    try {
+        const client = await mqtt.connect('mqtt://broker.hivemq.com:1883');
+        return client;
+    } catch (err) {
+        console.log("=========CONNECT MQTT FAILED===============");
+        return null;
+    }
+}
 
-
-
-
-// Nhận json từ client (web) thông qua websocket gửi lên mqtt
-// topic: //iot_light_20231/server
-// message: {"led":1,"status":1}
-
-
-
+module.exports = {connect};
 
 // Nhận dữ liệu từ database MongoDB visualize
 // Chưa làm

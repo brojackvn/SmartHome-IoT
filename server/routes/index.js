@@ -1,8 +1,8 @@
-const newsRouter = require('./led');
+const ledRouter = require('./led');
 
 function route(app) {
     app.use('/led', ledRouter);
-    app.use('/temperature', temperRouter);
+    // app.use('/temperature', temperRouter);
 }
 
 module.exports = route;

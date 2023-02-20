@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 async function connect() {
     try {
         await mongoose.connect('mongodb+srv://brojackvn:brojackvn@brojackvn.ccps7ka.mongodb.net/test');
-        console.log("=========CONNECT SUCCESSFULLY=========");
+        console.log("=========CONNECT DB SUCCESSFULLY=========");
     } catch (err) { 
-        console.log("=========CONNECT FAILED===============");
+        console.log("=========CONNECT DB FAILED===============");
     }
 }
 
