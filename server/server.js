@@ -20,6 +20,11 @@ const SensorModel = require('./app/models/SensorModel');
 // Connect to database
 db.connect();
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5501');
+    next();
+  });
+
 // Middleware:
 app.use(
     express.urlencoded({

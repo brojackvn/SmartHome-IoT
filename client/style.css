@@ -284,14 +284,14 @@ body {
     background: var(--white);
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    max-height: 500px;
+    /* max-height: 500px; */
 }
 
 /* Card */
 .cardHeader {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: column;
 }
 
 .cardHeader h2 {
@@ -470,6 +470,37 @@ color: #fff;
 
 input:checked:focus + .switch-left + .switch-right {
 color: #333;
+}
+
+.cardChart {
+    position: relative;
+    /* min-height: 550px; */
+    background: var(--white);
+    padding: 15px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.titleChart {
+    border-bottom: 1px solid var(--black2);
+    padding-bottom: 10px;
+}
+
+.contentChart {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleChart h3 {
+    text-align: center;
 }
 
 /* Responsive */

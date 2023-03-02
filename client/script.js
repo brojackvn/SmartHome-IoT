@@ -20,7 +20,6 @@ const socket = new WebSocket('ws://localhost:3000');
 // =====================================================
 // Edit switch button in html
 var divButton = document.querySelector('.mid');
-console.log(divButton.innerHTML);
 
 // =======================================================
 // Query switch button and check whether button is clicked
@@ -76,4 +75,80 @@ socket.addEventListener("message", function(event) {
     document.querySelector('.humidity').innerHTML = JSON.parse(event.data)["humidity"] + " %"
   }
 })
+
+// ====================================================================
+// fetch data from server: http://localhost:3000/sensor
+var time = [];
+var dataTemperature = [];
+var dataHumidity = [];
+
+fetch('http://localhost:3000/sensor')
+  .then(response => response.json())
+  .then(data => {
+    // Process the array of data items
+    // const items = data.slice(0, 10); // Get the first 10 items
+    data.forEach(element => {
+      const date = new Date(element.time);
+      time.push(`${date.getHours()}h:${date.getMinutes()}m`);
+      dataTemperature.push(element.temperature);
+      dataHumidity.push(element.humidity);
+    });
+  })
+  .catch(error => console.error(error));
+
+console.log(time);
+console.log(dataTemperature);
+console.log(dataHumidity);
+// ===================== Temperature Chart ============================
+var ctxTemp = document.getElementById('temperatureChart').getContext('2d');
+
+const dataTempChart = {
+  labels: time,
+  datasets: [{
+    label: 'Temperature',
+    data: dataTemperature,
+    fill: false,
+    borderColor: 'rgb(255,108,0)',
+    tension: 0.1
+  }]
+};
+
+const tempChart = new Chart(ctxTemp, {
+  type: 'line',
+  data: dataTempChart,
+  options: {
+      scales: {
+          y: {
+              stacked: true
+          }
+      }
+  }
+});
+
+// ====================================================================
+// ===================== Humidity Chart ============================
+var ctxHumidity = document.getElementById('humidityChart').getContext('2d');
+
+const dataHumidityChart = {
+  labels: time,
+  datasets: [{
+    label: 'Humidity',
+    data: dataHumidity,
+    fill: false,
+    borderColor: 'rgb(75, 192, 192)',
+    tension: 0.1
+  }]
+};
+
+const humidityChart = new Chart(ctxHumidity, {
+  type: 'line',
+  data: dataHumidityChart,
+  options: {
+      scales: {
+          y: {
+              stacked: true
+          }
+      }
+  }
+});
 
