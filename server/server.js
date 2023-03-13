@@ -21,7 +21,7 @@ const SensorModel = require('./app/models/SensorModel');
 db.connect();
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5501');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5501');
     next();
   });
 
@@ -55,6 +55,7 @@ try {
             const document = new SensorModel();
             document.temperature = JSON.parse(message.toString()).temperature;
             document.humidity = JSON.parse(message.toString()).humidity;
+
             document.save()
                 .then(() => {
                     console.log('Save data to database successfully!');

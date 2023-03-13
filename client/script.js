@@ -1,23 +1,6 @@
 const socket = new WebSocket('ws://localhost:3000');
 
 // =====================================================
-// Reload Page repeatedly after 3s
-// setInterval(() => {
-//   document.location.reload();
-// }, 3000);
-
-
-// =====================================================
-// Fetch the final status of LED from server
-// const statusLed = fetch('http://localhost:3000/led')
-//   .then(response => response.json())
-//   .then(data => {
-//     console.log(data);
-//     return data;
-//   })
-//   .catch(err => console.log(err));
-
-// =====================================================
 // Edit switch button in html
 var divButton = document.querySelector('.mid');
 
@@ -117,7 +100,11 @@ const tempChart = new Chart(ctxTemp, {
   type: 'line',
   data: dataTempChart,
   options: {
+    indexAxis: 'x',
       scales: {
+          x: {
+            beginAtZero: true
+          },
           y: {
               stacked: true
           }
