@@ -241,7 +241,7 @@ float h;
 float t;
 
 // =================== Sensor =======================
-void getInfoFromSensor() {
+void GetandSendInfoFromSensor() {
   // Wait a few seconds between measurements.
   delay(2000);
 
@@ -259,22 +259,17 @@ void getInfoFromSensor() {
     return;
   }
 
-  // Compute heat index in Fahrenheit (the default)
-  // float hif = dht.computeHeatIndex(f, h);
-  // Compute heat index in Celsius (isFahreheit = false)
-  // float hic = dht.computeHeatIndex(t, h, false);
+  // client.publish(MQTT_LDP_TOPIC_SEND_LED, "esp send data: chao mqttbox va nodejs server nhe"); 
+    // Allocate memory for the JSON string
+  char *message = (char*) malloc(100 * sizeof(char));
 
-  // Serial.print(F("Humidity: "));
-  // Serial.print(h);
-  // Serial.print(F("%  Temperature: "));
-  // Serial.print(t);
-  // Serial.print(F("°C "));
-  // Serial.print(f);
-  // Serial.print(F("°F  Heat index: "));
-  // Serial.print(hic);
-  // Serial.print(F("°C "));
-  // Serial.print(hif);
-  // Serial.println(F("°F"));
+  // Format the JSON string
+  sprintf(message, "{\"temperature\":%.1f, \"humidity\":%.1f}", t, h);
+
+  client.publish(MQTT_LDP_TOPIC_SEND_SENSOR, message);  
+
+  // Free the memory allocated for the JSON string
+  free(message);
 }
 
 void setup()
@@ -300,20 +295,6 @@ void setup()
   dht.begin();
 }
 
-void send_data() {
-  // client.publish(MQTT_LDP_TOPIC_SEND_LED, "esp send data: chao mqttbox va nodejs server nhe"); 
-    // Allocate memory for the JSON string
-  char* message = (char*) malloc(100 * sizeof(char));
-
-  // Format the JSON string
-  sprintf(message, "{\"temperature\":%.1f, \"humidity\":%.1f}", t, h);
-
-  client.publish(MQTT_LDP_TOPIC_SEND_SENSOR, message);  
-
-  // Free the memory allocated for the JSON string
-  free(message);
-}
-
 // ===================================================
 void loop()
 {
@@ -323,8 +304,7 @@ void loop()
   // =============== DHT ====================
   if (n % 1200 == 0) {
     n = 0;
-    getInfoFromSensor();
-    send_data();
+    GetandSendInfoFromSensor();
   }
   ++n;
   // ================LED===============

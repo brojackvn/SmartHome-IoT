@@ -150,4 +150,3 @@ const humidityChart = new Chart(ctxHumidity, {
       }
   }
 });
-
